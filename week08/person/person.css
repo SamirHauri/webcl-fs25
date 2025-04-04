@@ -1,0 +1,107 @@
+/* General Styles */
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", "sans-serif";
+}
+
+.card {
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+/* Table Styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: #f0f0f0;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr.selected {
+    background-color: #e0f7fa;
+}
+
+/* Div Grid Styles */
+.person-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 40px;
+    gap: 10px;
+    width: 100%;
+}
+
+.person-grid .header {
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+}
+
+.person-grid .row {
+    display: contents;
+}
+
+.person-grid .row.selected > div {
+    background-color: #e0f7fa;
+}
+
+.person-grid .row > div {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button Styles */
+button {
+    border: none;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    margin-bottom: 10px;
+}
+
+button.delete {
+    background-color: transparent;
+    color: darkred;
+    font-weight: bold;
+    padding: 0 5px;
+    margin: 0;
+}
+
+/* Form Styles */
+.detail-form {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input.invalid {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Placeholder */
+.placeholder {
+    color: #aaa;
+    font-style: italic;
+}
