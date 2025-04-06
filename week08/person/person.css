@@ -44,7 +44,7 @@ tr.selected {
 /* Div Grid Styles */
 .person-grid {
     display: grid;
-    grid-template-columns: auto 1fr 1fr 40px;
+    grid-template-columns: 0.5fr 2fr 2fr 0.5fr;
     width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 4px;
