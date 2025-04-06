@@ -1,4 +1,4 @@
-import {VALUE, VALID, EDITABLE, LABEL} from "../../kolibri-dist-0.9.10/kolibri/presentationModel.js";
+import { VALUE, VALID, EDITABLE, LABEL } from "../../kolibri-dist-0.9.10/kolibri/presentationModel.js";
 
 export { personTableProjector, personDivProjector, personFormProjector }
 
@@ -17,7 +17,8 @@ const bindTextInput = (textAttr, inputElement) => {
     textAttr.getObs(EDITABLE, true).onChange(
         isEditable => isEditable
         ? inputElement.removeAttribute("readonly")
-        : inputElement.setAttribute("readonly", true));
+        : inputElement.setAttribute("readonly", true)
+    );
 };
 
 // Helper to display text with binding
@@ -33,6 +34,18 @@ const personTextElement = (textAttr, isInput = true) => {
         textAttr.getObs(VALUE).onChange(text => spanElement.textContent = text);
         return spanElement;
     }
+};
+
+// Function for creating shared delete Button
+const createDeleteButton = (person, masterController) => {
+    const deleteButton = document.createElement("BUTTON");
+    deleteButton.setAttribute("class", "delete");
+    deleteButton.innerHTML = "&times;";
+    deleteButton.onclick = event => {
+        event.stopPropagation();
+        masterController.removePerson(person);
+    };
+    return deleteButton;
 };
 
 /**
@@ -82,16 +95,19 @@ const personTableProjector = (masterController, selectionController, rootElement
         
         // Delete button column
         const deleteCell = document.createElement("TD");
-        const deleteButton = document.createElement("BUTTON");
-        deleteButton.setAttribute("class", "delete");
-        deleteButton.innerHTML = "&times;";
-        deleteButton.onclick = _ => masterController.removePerson(person);
+        const deleteButton = createDeleteButton(person, masterController);
         deleteCell.appendChild(deleteButton);
         row.appendChild(deleteCell);
         
         // Handle selection
         row.onclick = _ => selectionController.setSelectedPerson(person);
-        
+        /*        row.addEventListener('click', event => {
+                    if (event.target.closest('button.delete')) {
+                        return;
+                    }
+                    selectionController.setSelectedPerson(person);
+                });*/
+
         // Update row styling when selection changes
         selectionController.onPersonSelected(selected => {
             if (selected === person) {
@@ -134,7 +150,7 @@ const personDivProjector = (masterController, selectionController, rootElement) 
     
     // Add header row
     const headerRow = document.createElement("DIV");
-    headerRow.classList.add("row");
+    headerRow.classList.add("row", "header-row");
     
     const headers = ["", "First Name", "Last Name", ""];
     headers.forEach(headerText => {
@@ -170,16 +186,19 @@ const personDivProjector = (masterController, selectionController, rootElement) 
         
         // Delete button column
         const deleteCell = document.createElement("DIV");
-        const deleteButton = document.createElement("BUTTON");
-        deleteButton.setAttribute("class", "delete");
-        deleteButton.innerHTML = "&times;";
-        deleteButton.onclick = _ => masterController.removePerson(person);
+        const deleteButton = createDeleteButton(person, masterController);
         deleteCell.appendChild(deleteButton);
         row.appendChild(deleteCell);
         
         // Handle selection
         row.onclick = _ => selectionController.setSelectedPerson(person);
-        
+        /*        row.addEventListener('click', event => {
+                    if (event.target.closest('button.delete')) {
+                        return;
+                    }
+                    selectionController.setSelectedPerson(person);
+                });*/
+
         // Update row styling when selection changes
         selectionController.onPersonSelected(selected => {
             if (selected === person) {
