@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Projectors Tests</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+        }
+        .ok {
+            color: green;
+        }
+        .failed {
+            color: red;
+            font-weight: bold;
+        }
+        #out {
+            display: grid;
+            grid-template-columns: 2em auto auto auto;
+            grid-column-gap: 0.5em;
+            margin: 1em 0;
+            padding: 1em;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Person Projector Tests</h1>
+<p>Die Testergebnisse werden unten angezeigt. Details auch in der Konsole.</p>
+
+<!-- Testausgabe -->
+<div id="out"></div>
+
+<script src="personTest.js" type="module"></script>
+
+</body>
+</html> 
