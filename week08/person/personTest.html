@@ -2,40 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Person Projectors Tests</title>
+    <title>Person Projector Tests</title>
+    <link rel="stylesheet" href="../../css/kolibri-base.css">
+    <link rel="shortcut icon" type="image/png" href="../img/logo/logo-60x54.png"/>
+    <link rel="stylesheet"                     href="../css/kolibri-base.css">
     <style>
         body {
-            font-family: sans-serif;
-            margin: 2em;
-        }
-        .ok {
-            color: green;
-        }
-        .failed {
-            color: red;
-            font-weight: bold;
+            width: 48em;
+            margin: auto;
         }
         #out {
+            max-height: calc(100vh - 20em);
+            overflow: scroll;
             display: grid;
-            grid-template-columns: 2em auto auto auto;
-            grid-column-gap: 0.5em;
-            margin: 1em 0;
-            padding: 1em;
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            grid-template-columns: repeat(4, max-content);
+            grid-column-gap: 2em;
+            grid-row-gap: .5em;
+            padding: 2em;
+            box-shadow: var(--kolibri-box-shadow);
+        }
+        #out div:nth-child(odd) {
+            color: var(--kolibri-color-output);
+        }
+        #out div:nth-child(4n-3) {
+            justify-self: end;
+        }
+        #grossTotal {
+            color: var(--kolibri-color-output);
+        }
+        footer {
+            position: fixed;
+            bottom:     0;
+            left:       0;
+            right:      0;
+            text-align: center;
+            color:      white;
+            background: var(--kolibri-color-neutral);
+            padding:    0.5em;
+        ;
         }
     </style>
 </head>
+
 <body>
 
-<h1>Person Projector Tests</h1>
-<p>Die Testergebnisse werden unten angezeigt. Details auch in der Konsole.</p>
+<h1>Person Projector Test Suite</h1>
 
-<!-- Testausgabe -->
-<div id="out"></div>
+<div class="holder">
+    <div class="out" id="out"></div>
+</div>
 
-<script src="personTest.js" type="module"></script>
+<script type="module" src="./personTest.js"></script>
+
+<footer>
+    <p>Person Projector Pattern Tests - Week 08</p>
+</footer>
 
 </body>
 </html> 
